@@ -30,20 +30,22 @@ We follow a lean development approach inspired by [ethlambda](https://github.com
 Core type system and SSZ serialization - the bedrock everything else builds on.
 
 - [x] Core primitive types (Slot, Epoch, Root, ValidatorIndex)
-- [x] Byte array types (Bytes4, Bytes20, Bytes32, Bytes48, Bytes52, Bytes96)
+- [x] Byte array types (Bytes4, Bytes20, Bytes32, Bytes48, Bytes52, Bytes96, Bytes3116)
 - [x] SSZ collections (Bitlist, Bitvector)
 - [x] SSZ serialization and merkleization
 - [x] `HashTreeRoot()` implementation
+- [x] `Slot.IsJustifiableAfter()` for 3SF-mini finality rules
 
-### Milestone 2: Consensus Containers
+### Milestone 2: Consensus Containers - COMPLETE
 
 Data structures for blocks, state, and attestations.
 
-- [ ] Checkpoint, Validator containers
-- [ ] Attestation, AttestationData, SignedAttestation
-- [ ] BlockHeader, BlockBody, Block, SignedBlockWithAttestation
-- [ ] State container with full validator registry
-- [ ] Chain configuration constants
+- [x] Checkpoint, Validator containers
+- [x] Attestation, AttestationData, SignedAttestation, AggregatedAttestation
+- [x] BlockHeader, BlockBody, Block, BlockWithAttestation, SignedBlockWithAttestation
+- [x] State container with full validator registry
+- [x] Chain configuration (Config with GenesisTime)
+- [x] HashTreeRoot for all containers
 
 ### Milestone 3: Clock & Genesis
 
@@ -125,9 +127,11 @@ Complete integrated client.
 
 **Milestone 1: Foundation** - Complete
 
-The core type system and SSZ serialization are fully implemented. Run `go test ./...` to verify.
+**Milestone 2: Consensus Containers** - Complete
 
-**Next:** Milestone 2 - Consensus Containers
+All consensus data structures and their SSZ HashTreeRoot implementations are complete. Run `go test ./...` to verify (35 tests passing).
+
+**Next:** Milestone 3 - Clock & Genesis
 
 ## License
 
